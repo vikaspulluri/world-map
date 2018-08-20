@@ -7,6 +7,10 @@ import { CountriesComponent } from './countries/countries.component';
 import { CountryComponent } from './country/country.component';
 import { HomeComponent } from './home/home.component';
 import { FilterBarComponent } from './filter-bar/filter-bar.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
+import { AppRoutingModule } from './app-routing.module';
+import { ContinentsComponent } from './continents/continents.component';
+import { WelcomeScreenComponent } from './welcome-screen/welcome-screen.component';
 
 @NgModule({
   declarations: [
@@ -15,10 +19,14 @@ import { FilterBarComponent } from './filter-bar/filter-bar.component';
     CountriesComponent,
     CountryComponent,
     HomeComponent,
-    FilterBarComponent
+    FilterBarComponent,
+    ErrorPageComponent,
+    ContinentsComponent,
+    WelcomeScreenComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
