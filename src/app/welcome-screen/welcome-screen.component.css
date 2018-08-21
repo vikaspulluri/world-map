@@ -9,15 +9,18 @@ div{
     height: 100%;
     top: 0;
     left: 0;
-    background: #000;
+    background: url(/assets/world-map-bg.jpg) no-repeat;
+    background-size: cover;
+    background-position: 10%;
     overflow: hidden;
     z-index: 1050;
+    color: #adff2f;
 }
 .content-wrap{
     position: absolute;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translateY(-50%);
+    width:100%;
     text-align: center;
 }
 .fly-in-text{

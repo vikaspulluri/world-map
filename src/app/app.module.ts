@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -11,6 +12,11 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ContinentsComponent } from './continents/continents.component';
 import { WelcomeScreenComponent } from './welcome-screen/welcome-screen.component';
+import { ToggleWelcomeScreenDirective } from './welcome-screen/toggle-welcome-screen.directive';
+import { AppHttpService } from './app-http.service';
+import { HttpModule } from '@angular/http';
+import { ToastrModule } from 'ngx-toastr';
+import { MatchHeightDirective } from './match-height.directive';
 
 @NgModule({
   declarations: [
@@ -23,12 +29,17 @@ import { WelcomeScreenComponent } from './welcome-screen/welcome-screen.componen
     ErrorPageComponent,
     ContinentsComponent,
     WelcomeScreenComponent,
+    ToggleWelcomeScreenDirective,
+    MatchHeightDirective
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
-  providers: [],
+  providers: [AppHttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,35 @@
+.countries{
+    position: relative;
+    top: 65px;
+}
+.country{
+    margin: .5em auto;
+}
+.card{
+    border: 2px solid #adff2f;
+    text-align: center;
+    border-radius: 5px;
+}
+.list-group-item{
+    background-color: transparent;
+    color: #fff;
+    border: none;
+}
+.languages .list-group-item, .currencies .list-group-item{
+    display: inline-block;
+}
+.filter-btn{
+    display: inline;
+    padding: 7px 15px;
+    border: 2px solid #adff2f;
+    color: #fff;
+    cursor: pointer;
+    border-radius: .5em;
+}
+
+.filter-btn:hover{
+    cursor: pointer;
+    text-decoration: none;
+    background: #adff2f;
+    color:#000;
+}

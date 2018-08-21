@@ -1,1 +1,36 @@
 <app-header></app-header>
+<main class="container countries" appMatchHeight="card">
+    <div class="row">
+        <div class="col-xs-1 col-sm-2 col-md-4 col-lg-4 country" *ngFor="let country of countries">
+            <div class="card">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <img class="img-thumbnail" [src]="country.flag">
+                    </li>
+                    <li class="list-group-item">
+                        <h3>{{ country.name }}</h3>
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Capital: </strong> {{ country.capital }}
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Languages:</strong>
+                        <ul class="list-group languages">
+                            <li class="list-group-item" *ngFor="let language of country.languages">
+                                <a class="filter-btn">{{ language.name }}</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Currencies:</strong>
+                        <ul class="list-group currencies">
+                            <li class="list-group-item" *ngFor="let currency of country.currencies">
+                                <a class="filter-btn">{{ currency.name }}</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>        
+            </div>
+        </div>
+    </div>
+</main>

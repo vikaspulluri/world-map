@@ -5,23 +5,11 @@ import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angula
   templateUrl: './welcome-screen.component.html',
   styleUrls: ['./welcome-screen.component.css']
 })
-export class WelcomeScreenComponent implements OnInit, AfterViewInit {
-  @ViewChild('welcomeScreen') welcomeScreen:ElementRef;
+export class WelcomeScreenComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
     
-  }
-
-  ngAfterViewInit(){
-    setTimeout(function(){
-      this.welcomeScreen.nativeElement.classList.remove('content-hidden');
-    }.bind(this),900)
-  }
-
-  onEnter(){
-    this.welcomeScreen.nativeElement.classList.add('content-hidden');
-    this.welcomeScreen.nativeElement.style.display = "none";
   }
 
 
