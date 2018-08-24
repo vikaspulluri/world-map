@@ -1,43 +1,46 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AppHttpService } from '../app-http.service';
 import { HelpersService } from '../helpers.service';
+import { Response } from '@angular/http';
+import { FiltersService } from '../filters.service';
 
 @Component({
   selector: 'app-countries',
   templateUrl: './countries.component.html',
   styleUrls: ['./countries.component.css']
 })
-export class CountriesComponent implements OnInit, AfterViewInit {
+export class CountriesComponent implements OnInit {
 
-  constructor(private route:ActivatedRoute, private httpService:AppHttpService, private helpersService:HelpersService) { }
-  continent:string = '';
-  countries;
-
-  ngOnInit() {
-    this.route.queryParamMap.subscribe(
-      (queryParams) => {
-        this.continent = queryParams.get('continent');
+  constructor(private route:ActivatedRoute, private httpService:AppHttpService, private helpersService:HelpersService,private filtersService:FiltersService) { 
+    this.filtersService.filtersChanged$.subscribe(
+      (changed) => {
+        this.activeRegions = this.filtersService.getActiveRegionFilters();
         this.getCountriesInARegion();
-      },
-      (error) => console.log(error)
+      }
     )
   }
+  continent:string = '';
+  activeRegions;
+  countries;
 
-  ngAfterViewInit(){
-    
-  }
+  ngOnInit() { }
+
 
 
   getCountriesInARegion(){
     this.httpService
-        .getCountriesByRegion(this.continent)
+        .getCountriesByRegions(this.activeRegions)
         .subscribe(
           (rawData)=>{
-            this.countries = this.filterRawData(rawData);
-            console.log(this.countries);
+            console.log(rawData);
+            // this.countries = this.filterRawData(rawData);
+            // console.log(this.countries);
           },
-          (error) => console.log(error)
+          (error:Response) => {
+            let err = error.json();
+            this.helpersService.showErrorMsg(err.message);
+          }
         )
   }
 
@@ -55,6 +58,7 @@ export class CountriesComponent implements OnInit, AfterViewInit {
     return filteredData;
   }
 
+  
 
 
 }

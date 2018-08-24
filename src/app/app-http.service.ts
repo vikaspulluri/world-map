@@ -9,15 +9,24 @@ import { map, catchError } from 'rxjs/operators';
 export class AppHttpService{
     constructor(private http:Http){}
 
-    getCountriesByRegion(continent:string){
-        return this.http
-                    .get(`${config.http.hostUrl}/region/${continent}`)
-                    .pipe(map((res:Response) => res.json()))
+    getCountriesByRegions(continents){
+        let hostUrl = config.http.hostUrl;
+        let observableBatch = [];
+        for(let continent of continents){
+            observableBatch.push(
+                this.http
+                    .get(`${hostUrl}/region/${continent.name}`)
+                    .pipe(map(
+                        (res:Response)=>res.json())
+                    )
                     .pipe(catchError(
                         (error:Response) => {
                             console.log(error);
                             return Observable.throw(error);
                         })
-                    );
+                    )
+                );
+        }
+        return Observable.forkJoin(observableBatch);
     }
 }

@@ -1,10 +1,11 @@
 import { Directive, OnInit, ElementRef, Renderer2, AfterViewInit, HostListener } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Directive({
     selector: '[toggleWelcomeScreen]'
 })
 export class ToggleWelcomeScreenDirective implements OnInit, AfterViewInit{
-    constructor(private eleRef:ElementRef, private renderer:Renderer2){}
+    constructor(private eleRef:ElementRef, private renderer:Renderer2, private router:Router){}
     ngOnInit(){}
 
     ngAfterViewInit(){
@@ -16,6 +17,6 @@ export class ToggleWelcomeScreenDirective implements OnInit, AfterViewInit{
     @HostListener('click',['$event']) onClick(event:MouseEvent){
         event.preventDefault();
         this.renderer.addClass(this.eleRef.nativeElement.parentNode.parentNode,'content-hidden');
-        this.renderer.setStyle(this.eleRef.nativeElement.parentNode.parentNode,'display','none');
+        this.router.navigate(['/continents']);
     }
 }

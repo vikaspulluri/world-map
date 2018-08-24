@@ -1,3 +1,10 @@
-<p>
-  filter-bar works!
-</p>
+<div class="filter-panel">
+  <div class="filter-regions">
+    <form [formGroup]="regionFiltersForm" (ngSubmit)="onFormSubmit()">
+        <label formArrayName="regionFilters" *ngFor="let filter of regionFiltersForm.controls.regionFilters.controls;let i = index">
+            <input type="checkbox" [formControlName]="i">{{ regionFilters[i].name }}
+        </label>
+        <button>submit</button>
+    </form>
+  </div>
+</div>

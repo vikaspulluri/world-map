@@ -4,9 +4,11 @@ import { HomeComponent } from './home/home.component';
 import { CountriesComponent } from './countries/countries.component';
 import { CountryComponent } from './country/country.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { WelcomeScreenComponent } from './welcome-screen/welcome-screen.component';
 
 export const appRoutes:Routes = [
-    {path: '', component: HomeComponent},
+    {path: '', component: WelcomeScreenComponent},
+    {path: 'continents', component:HomeComponent},
     {path: 'countries', component: CountriesComponent},
     {path: 'country', component: CountryComponent},
     {path: 'not-found', component: ErrorPageComponent},

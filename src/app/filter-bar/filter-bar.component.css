@@ -1,0 +1,7 @@
+.filter-panel{
+    position: relative;
+    top: 65px;
+}
+.filter-panel label{
+    display: block;
+}

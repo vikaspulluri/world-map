@@ -9,22 +9,31 @@
     border: 2px solid #adff2f;
     text-align: center;
     border-radius: 5px;
+    background: linear-gradient(to right, #000000 0%, #0b0c0c 4%, #262627 10%, #474848 16%, #9d9fa1 31%, #c6c8cb 39%, #ced0d3 41%, #d9dcdf 45%, #e0e3e6 49%, #e1e4e7 51%, #e0e3e6 53%, #d9dcdf 57%, #ced0d3 61%, #c6c8cb 63%, #9d9fa1 71%, #3b3c3d 88%, #1c1d1d 94%, #050505 100%)
 }
+
 .list-group-item{
-    background-color: transparent;
-    color: #fff;
+    background: transparent;
+    color: #000;
     border: none;
+}
+
+.languages,.currencies{
+    margin-top: 10px;
 }
 .languages .list-group-item, .currencies .list-group-item{
     display: inline-block;
+    padding: 0px;
+    margin: 0 5px 0 0;
 }
 .filter-btn{
     display: inline;
-    padding: 7px 15px;
+    padding: 2px 5px;
     border: 2px solid #adff2f;
     color: #fff;
     cursor: pointer;
     border-radius: .5em;
+    font-size: .8em;
 }
 
 .filter-btn:hover{
