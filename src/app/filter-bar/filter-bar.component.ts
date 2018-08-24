@@ -13,6 +13,8 @@ import { HelpersService } from '../helpers.service';
 export class FilterBarComponent implements OnInit {
     regionFiltersForm: FormGroup;
     regionFilters = config.map.regions;
+    orderByFilters = config.filters.orderBy;
+    sortByFilters = config.filters.sortByProp;
     selectedRegion;
 
     constructor(private formBuilder: FormBuilder, private route:ActivatedRoute,private helpersService:HelpersService,private filtersService:FiltersService){
@@ -20,7 +22,8 @@ export class FilterBarComponent implements OnInit {
             (queryParams) => {
                 this.selectedRegion = queryParams.get('continent');
                 const activeFilter = this.helpersService.getRegionIdByName(this.selectedRegion);
-                this.filtersService.setActiveRegionFilters(activeFilter);
+                this.filtersService.setActiveFilters(activeFilter);
+                this.filtersService.setOrderByAndSortBy('asc','name');
             },
             (error) => console.log(error)
         )
@@ -33,20 +36,24 @@ export class FilterBarComponent implements OnInit {
 
     setFilters(){
         //Region filters
-        const formControls = this.regionFilters.map(control => new FormControl(false));
+        const regionFormControls = this.regionFilters.map(control => new FormControl(false));
         let activeFilter = this.helpersService.getRegionIdByName(this.selectedRegion);
-        formControls[activeFilter.counter-1].setValue(true);
+        regionFormControls[activeFilter.counter-1].setValue(true);
+
+        
 
         this.regionFiltersForm = this.formBuilder.group({
-            regionFilters: new FormArray(formControls)
+            regionFilters: new FormArray(regionFormControls),
+            orderByFilters: new FormControl('asc'),
+            sortByFilters: new FormControl('name')
         });
     }
 
     onFormSubmit(){
-        const selectedFilters = this.regionFiltersForm.value.regionFilters
+        const selectedRegions = this.regionFiltersForm.value.regionFilters
                                                             .map((val,iter)=> val ? this.regionFilters[iter] : null)
                                                             .filter(val => val != null);
-        this.filtersService.setActiveRegionFilters(selectedFilters);
-        console.log(selectedFilters);
+        this.filtersService.setActiveFilters(selectedRegions);
+        this.filtersService.setOrderByAndSortBy(this.regionFiltersForm.value.orderByFilters,this.regionFiltersForm.value.sortByFilters);
     }
 }

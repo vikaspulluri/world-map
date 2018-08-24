@@ -28,19 +28,40 @@ export class HelpersService {
     for(let items of rawData){
       let filteredItems = items.map((item)=>{
         let tmpObj:{[k:string]:any} = {};
-      tmpObj.name = item.name;
-      tmpObj.flag = item.flag;
-      tmpObj.capital = item.capital;
-      tmpObj.population = item.population;
-      tmpObj.languages = item.languages;
-      tmpObj.currencies = item.currencies;
-      return tmpObj;
+        tmpObj.name = item.name;
+        tmpObj.flag = item.flag;
+        tmpObj.capital = item.capital;
+        tmpObj.population = item.population;
+        tmpObj.languages = item.languages;
+        tmpObj.currencies = item.currencies;
+        tmpObj.region = item.region;
+        return tmpObj;
       });
       filteredData = filteredData.concat(filteredItems);
     }
-
     return filteredData;
   }
+
+  groupData(data,sortByProp,orderBy){
+    if(orderBy === 'asc'){
+      return data.sort(this.sortBy(sortByProp));
+    }else{
+      return data.sort(this.sortBy(`-${sortByProp}`));
+    }
+  }
+
+  sortBy(prop){
+    var sortOrder = 1;
+    if(prop[0] === "-") {
+        sortOrder = -1;
+        prop = prop.substr(1);
+    }
+    return function (a,b) {
+        var result = (a[prop] < b[prop]) ? -1 : (a[prop] > b[prop]) ? 1 : 0;
+        return result * sortOrder;
+    } 
+  }
+
 
   showSuccessMsg(msg){
     this.toastr.success(msg);

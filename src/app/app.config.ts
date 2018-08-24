@@ -1,8 +1,7 @@
 export const config = {
     filters: {
-        regions: [],
-        languages: [],
-        currencies: []
+        orderBy: ['asc','dsc'],
+        sortByProp: ['name','population','capital']
     },
     http: {
         hostUrl: 'https://restcountries.eu/rest/v2'

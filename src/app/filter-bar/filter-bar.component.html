@@ -1,10 +1,33 @@
 <div class="filter-panel">
   <div class="filter-regions">
     <form [formGroup]="regionFiltersForm" (ngSubmit)="onFormSubmit()">
+        <h3>Regions:</h3>
         <label formArrayName="regionFilters" *ngFor="let filter of regionFiltersForm.controls.regionFilters.controls;let i = index">
             <input type="checkbox" [formControlName]="i">{{ regionFilters[i].name }}
         </label>
+        
+        <hr>
+
+        <h3>Sort By:</h3>
+        <div class="radio" *ngFor="let filter of sortByFilters">
+          <label for="{{ filter }}">
+              <input type="radio" [value]="filter" formControlName="sortByFilters" id="{{ filter }}">
+              {{ filter }}
+          </label>
+        </div>
+        
+        <hr>
+
+        <h3>Order By:</h3>
+        <div class="radio" *ngFor="let filter of orderByFilters">
+          <label for="{{ filter }}">
+              <input type="radio" [value]="filter" formControlName="orderByFilters" id="{{ filter }}">
+              {{ filter }}
+          </label>
+        </div>
+        
         <button>submit</button>
-    </form>
+     </form>
+    
   </div>
 </div>

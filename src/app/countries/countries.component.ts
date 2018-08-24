@@ -16,13 +16,22 @@ export class CountriesComponent implements OnInit {
     this.filtersService.filtersChanged$.subscribe(
       (changed) => {
         this.activeRegions = this.filtersService.getActiveRegionFilters();
+        
         this.getCountriesInARegion();
+      }
+    );
+    this.filtersService.orderByChanged$.subscribe(
+      (changed) => {
+        let sortBy = this.filtersService.getSortByFilter();
+        let orderBy = this.filtersService.getOrderByFilter();
+        this.countries = this.helpersService.groupData(this.countries,sortBy,orderBy);
+        console.log(this.countries);
       }
     )
   }
   continent:string = '';
   activeRegions;
-  countries;
+  countries = [];
 
   ngOnInit() { }
 
@@ -33,7 +42,7 @@ export class CountriesComponent implements OnInit {
         .getCountriesByRegions(this.activeRegions)
         .subscribe(
           (rawData)=>{
-            console.log(rawData);
+            this.countries = this.helpersService.groupRawDataIntoSingleArr(rawData);
             // this.countries = this.filterRawData(rawData);
             // console.log(this.countries);
           },
@@ -43,22 +52,5 @@ export class CountriesComponent implements OnInit {
           }
         )
   }
-
-  filterRawData(rawData:{[k:string]:any}[]){
-    let filteredData = rawData.map(function(item){
-      let tmpObj:{[k:string]:any} = {};
-      tmpObj.name = item.name;
-      tmpObj.flag = item.flag;
-      tmpObj.capital = item.capital;
-      tmpObj.population = item.population;
-      tmpObj.languages = item.languages;
-      tmpObj.currencies = item.currencies;
-      return tmpObj;
-    })
-    return filteredData;
-  }
-
-  
-
 
 }
