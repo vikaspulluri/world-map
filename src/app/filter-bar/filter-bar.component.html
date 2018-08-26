@@ -1,9 +1,9 @@
 <div class="filter-panel">
   <div class="filter-regions">
-    <form [formGroup]="regionFiltersForm" (ngSubmit)="onFormSubmit()">
+    <form [formGroup]="filtersForm">
         <h3>Regions:</h3>
-        <label formArrayName="regionFilters" *ngFor="let filter of regionFiltersForm.controls.regionFilters.controls;let i = index">
-            <input type="checkbox" [formControlName]="i">{{ regionFilters[i].name }}
+        <label formArrayName="regionFilters" *ngFor="let filter of filtersForm.controls.regionFilters.controls;let i = index">
+            <input type="checkbox" [formControlName]="i" (ngModelChange)="onFormSubmit()">{{ regionFilters[i].name }}
         </label>
         
         <hr>
@@ -11,8 +11,8 @@
         <h3>Sort By:</h3>
         <div class="radio" *ngFor="let filter of sortByFilters">
           <label for="{{ filter }}">
-              <input type="radio" [value]="filter" formControlName="sortByFilters" id="{{ filter }}">
-              {{ filter }}
+              <input type="radio" [value]="filter" formControlName="sortByFilters" id="{{ filter }}" (ngModelChange)="onFormSubmit()">
+              {{ filter | titlecase }}
           </label>
         </div>
         
@@ -21,13 +21,11 @@
         <h3>Order By:</h3>
         <div class="radio" *ngFor="let filter of orderByFilters">
           <label for="{{ filter }}">
-              <input type="radio" [value]="filter" formControlName="orderByFilters" id="{{ filter }}">
-              {{ filter }}
+              <input type="radio" [value]="filter" formControlName="orderByFilters" id="{{ filter }}" (ngModelChange)="onFormSubmit()">
+              {{ filter | titlecase }}
           </label>
         </div>
-        
-        <button>submit</button>
-     </form>
+        </form>
     
   </div>
 </div>

@@ -13,7 +13,7 @@ export class MatchHeightDirective implements AfterViewChecked {
     ngAfterViewChecked() {
         setTimeout(function(){
             this.matchHeight(this.eleRef.nativeElement, this.appMatchHeight);
-        }.bind(this), 800);
+        }.bind(this), 1500);
     }
 
     matchHeight(parent: HTMLElement, className: string) {

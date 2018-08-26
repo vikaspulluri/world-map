@@ -18,6 +18,7 @@ import { AppHttpService } from './app-http.service';
 import { HttpModule } from '@angular/http';
 import { ToastrModule } from 'ngx-toastr';
 import { MatchHeightDirective } from './match-height.directive';
+import { NgxSpinnerModule, NgxSpinnerComponent } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { MatchHeightDirective } from './match-height.directive';
     ContinentsComponent,
     WelcomeScreenComponent,
     ToggleWelcomeScreenDirective,
-    MatchHeightDirective
+    MatchHeightDirective,
+    NgxSpinnerComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +43,7 @@ import { MatchHeightDirective } from './match-height.directive';
     ToastrModule.forRoot(),
     ReactiveFormsModule
   ],
-  providers: [AppHttpService],
+  providers: [AppHttpService, NgxSpinnerModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

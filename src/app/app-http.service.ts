@@ -9,6 +9,10 @@ import { map, catchError } from 'rxjs/operators';
 export class AppHttpService{
     constructor(private http:Http){}
 
+    /**
+     * 
+     * @param continents : Array of objects in the format of [{code: "142", name: "Asia", counter: 4}]
+     */
     getCountriesByRegions(continents){
         let hostUrl = config.http.hostUrl;
         let observableBatch = [];
@@ -28,5 +32,31 @@ export class AppHttpService{
                 );
         }
         return Observable.forkJoin(observableBatch);
+    }
+
+    getCountriesByLanguage(language){
+        return this.http.get(`${config.http.hostUrl}/lang/${language}`)
+                .pipe(map(
+                    (res:Response)=>res.json())
+                )
+                .pipe(catchError(
+                    (error:Response) => {
+                        console.log(error);
+                        return Observable.throw(error);
+                    })
+                );
+    }
+
+    getCountriesByCurrency(currency){
+        return this.http.get(`${config.http.hostUrl}/currency/${currency}`)
+                .pipe(map(
+                    (res:Response)=>res.json())
+                )
+                .pipe(catchError(
+                    (error:Response) => {
+                        console.log(error);
+                        return Observable.throw(error);
+                    })
+                );
     }
 }

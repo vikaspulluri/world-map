@@ -1,8 +1,10 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { config } from '../app.config';
 import { HelpersService } from '../helpers.service';
-import { Router } from '@angular/router';
 
+/*We need a global variable 'google' so that after the loader.js script executed in the index.html,
+this value gets initilized */
 declare let google:any;
 
 @Component({
@@ -14,6 +16,7 @@ export class ContinentsComponent implements OnInit {
   public countryId;
 
   constructor(private helpersService:HelpersService, private router:Router) {
+    // Loading google geochart
     google.charts.load('current', {
       'packages': ['geochart'],
       'mapsApiKey': config.map.apiKey
@@ -21,6 +24,7 @@ export class ContinentsComponent implements OnInit {
   }
 
   ngOnInit() {
+    //executing a callback function once the chart has been loaded
     google.charts.setOnLoadCallback(()=>this.drawRegionsMap());
   }
   
@@ -38,11 +42,12 @@ export class ContinentsComponent implements OnInit {
 
     for(let i=0;i<regions.length;i++){
       regionsData.push(regions[i]);
-    }
+    } //regionsData is a format of data that google expects from us as input
 
     const data = new google.visualization.arrayToDataTable(regionsData);
     const geoChart = new google.visualization.GeoChart(document.getElementById('regions_div'));
 
+    //handler function for click event in chart region
     function clickHandler() {
       let clickedItem = geoChart.getSelection()[0];
       if (clickedItem) {

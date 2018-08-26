@@ -11,7 +11,7 @@ import { HelpersService } from '../helpers.service';
   styleUrls: ['./filter-bar.component.css']
 })
 export class FilterBarComponent implements OnInit {
-    regionFiltersForm: FormGroup;
+    filtersForm: FormGroup;
     regionFilters = config.map.regions;
     orderByFilters = config.filters.orderBy;
     sortByFilters = config.filters.sortByProp;
@@ -21,39 +21,41 @@ export class FilterBarComponent implements OnInit {
         this.route.queryParamMap.subscribe(
             (queryParams) => {
                 this.selectedRegion = queryParams.get('continent');
-                const activeFilter = this.helpersService.getRegionIdByName(this.selectedRegion);
-                this.filtersService.setActiveFilters(activeFilter);
-                this.filtersService.setOrderByAndSortBy('asc','name');
+                if(this.selectedRegion){
+                    const activeFilter = this.helpersService.getRegionIdByName(this.selectedRegion);
+                    this.filtersService.setActiveFilters(activeFilter);
+                }else{
+                    this.filtersService.setActiveFilters([]);
+                }
+                this.filtersService.setOrderByAndSortBy(config.filters.orderBy[0],config.filters.sortByProp[0]);
             },
             (error) => console.log(error)
         )
         
         this.setFilters();
     }
-    ngOnInit(){
-        
-    }
+    ngOnInit(){}
 
     setFilters(){
         //Region filters
         const regionFormControls = this.regionFilters.map(control => new FormControl(false));
-        let activeFilter = this.helpersService.getRegionIdByName(this.selectedRegion);
-        regionFormControls[activeFilter.counter-1].setValue(true);
+        if(this.selectedRegion){
+            let activeFilter = this.helpersService.getRegionIdByName(this.selectedRegion);
+            regionFormControls[activeFilter.counter-1].setValue(true);
+        }
 
-        
-
-        this.regionFiltersForm = this.formBuilder.group({
+        this.filtersForm = this.formBuilder.group({
             regionFilters: new FormArray(regionFormControls),
-            orderByFilters: new FormControl('asc'),
-            sortByFilters: new FormControl('name')
+            orderByFilters: new FormControl(config.filters.orderBy[0]),
+            sortByFilters: new FormControl(config.filters.sortByProp[0])
         });
     }
 
     onFormSubmit(){
-        const selectedRegions = this.regionFiltersForm.value.regionFilters
+        const selectedRegions = this.filtersForm.value.regionFilters
                                                             .map((val,iter)=> val ? this.regionFilters[iter] : null)
                                                             .filter(val => val != null);
         this.filtersService.setActiveFilters(selectedRegions);
-        this.filtersService.setOrderByAndSortBy(this.regionFiltersForm.value.orderByFilters,this.regionFiltersForm.value.sortByFilters);
+        this.filtersService.setOrderByAndSortBy(this.filtersForm.value.orderByFilters,this.filtersForm.value.sortByFilters);
     }
 }

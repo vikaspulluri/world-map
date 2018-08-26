@@ -6,11 +6,17 @@
     margin: .5em auto;
 }
 .card{
-    border: 2px solid #adff2f;
+    border: 2px solid #000;
     text-align: center;
     border-radius: 5px;
-    background: linear-gradient(to right, #000000 0%, #0b0c0c 4%, #262627 10%, #474848 16%, #9d9fa1 31%, #c6c8cb 39%, #ced0d3 41%, #d9dcdf 45%, #e0e3e6 49%, #e1e4e7 51%, #e0e3e6 53%, #d9dcdf 57%, #ced0d3 61%, #c6c8cb 63%, #9d9fa1 71%, #3b3c3d 88%, #1c1d1d 94%, #050505 100%)
+    background: transparent;
 }
+
+.card.europe,.card.europe .filter-btn{border: 2px solid #1986f3}
+.card.asia, .card.asia .filter-btn{border: 2px solid #f3c936}
+.card.africa, .card.africa .filter-btn{border: 2px solid #af2fbb}
+.card.americas, .card.americas .filter-btn{border: 2px solid #0bcc7a}
+.card.oceania, .card.oceania .filter-btn{border: 2px solid #c30101}
 
 .list-group-item{
     background: transparent;
@@ -27,18 +33,25 @@
     margin: 0 5px 0 0;
 }
 .filter-btn{
-    display: inline;
+    display: inline-block;
     padding: 2px 5px;
-    border: 2px solid #adff2f;
-    color: #fff;
+    color: #000;
     cursor: pointer;
     border-radius: .5em;
     font-size: .8em;
 }
-
 .filter-btn:hover{
     cursor: pointer;
     text-decoration: none;
-    background: #adff2f;
     color:#000;
+}
+.card .filter-btn.more{
+    padding: .5em 1.5em;
+    border-radius: 5px;
+    font-size: 1em;
+    border: 2px solid #000;
+}
+.filter-btn.more:hover{
+    background: #000;
+    color: #fff;
 }
