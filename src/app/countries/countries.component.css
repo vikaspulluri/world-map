@@ -11,6 +11,13 @@
     border-radius: 5px;
     background: transparent;
 }
+h2{
+    text-align: center;
+}
+h3{
+    padding: 0;
+    margin: 0;
+}
 
 .card.europe,.card.europe .filter-btn{border: 2px solid #1986f3}
 .card.asia, .card.asia .filter-btn{border: 2px solid #f3c936}
@@ -18,6 +25,9 @@
 .card.americas, .card.americas .filter-btn{border: 2px solid #0bcc7a}
 .card.oceania, .card.oceania .filter-btn{border: 2px solid #c30101}
 
+.list-group{
+    margin-bottom: 0;
+}
 .list-group-item{
     background: transparent;
     color: #000;
@@ -50,6 +60,7 @@
     border-radius: 5px;
     font-size: 1em;
     border: 2px solid #000;
+    margin: 0 0 1em 0;
 }
 .filter-btn.more:hover{
     background: #000;

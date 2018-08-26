@@ -6,11 +6,17 @@ export class FiltersService{
     activeRegionFilters;
     sortByFilter;
     orderByFilter;
-    public filtersChanged = new Subject<boolean>();
-    public orderByChanged = new Subject<boolean>();
-    public isAllDataLoaded = new Subject<boolean>();
-    filtersChanged$ = this.filtersChanged.asObservable();
-    orderByChanged$ = this.orderByChanged.asObservable();
+    private filtersChanged;
+    private orderByChanged;
+    public filtersChanged$;
+    public orderByChanged$;
+
+    constructor(){
+        this.filtersChanged = new Subject<boolean>();
+        this.orderByChanged = new Subject<boolean>();
+        this.filtersChanged$ = this.filtersChanged.asObservable();
+        this.orderByChanged$ = this.orderByChanged.asObservable();
+    }
 
     setActiveFilters(regions){
         let currentRegionFilters = this.getActiveRegionFilters();

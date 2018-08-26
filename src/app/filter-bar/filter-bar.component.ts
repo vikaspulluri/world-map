@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { config } from '../app.config';
 import { FiltersService } from '../filters.service';
@@ -10,15 +10,16 @@ import { HelpersService } from '../helpers.service';
   templateUrl: './filter-bar.component.html',
   styleUrls: ['./filter-bar.component.css']
 })
-export class FilterBarComponent implements OnInit {
+export class FilterBarComponent implements OnInit, OnDestroy {
     filtersForm: FormGroup;
     regionFilters = config.map.regions;
     orderByFilters = config.filters.orderBy;
     sortByFilters = config.filters.sortByProp;
     selectedRegion;
+    queryParams;
 
     constructor(private formBuilder: FormBuilder, private route:ActivatedRoute,private helpersService:HelpersService,private filtersService:FiltersService){
-        this.route.queryParamMap.subscribe(
+        this.queryParams = this.route.queryParamMap.subscribe(
             (queryParams) => {
                 this.selectedRegion = queryParams.get('continent');
                 if(this.selectedRegion){
@@ -31,7 +32,11 @@ export class FilterBarComponent implements OnInit {
             },
             (error) => console.log(error)
         )
-        
+        this.filtersService.filtersChanged$.subscribe(
+            (changed) => {
+                this.setFilters();
+            }
+        );
         this.setFilters();
     }
     ngOnInit(){}
@@ -39,9 +44,11 @@ export class FilterBarComponent implements OnInit {
     setFilters(){
         //Region filters
         const regionFormControls = this.regionFilters.map(control => new FormControl(false));
-        if(this.selectedRegion){
-            let activeFilter = this.helpersService.getRegionIdByName(this.selectedRegion);
-            regionFormControls[activeFilter.counter-1].setValue(true);
+        let activeFilter = this.filtersService.getActiveRegionFilters();
+        if(activeFilter && activeFilter.length){
+            for(let i=0;i<activeFilter.length;i++){
+                regionFormControls[activeFilter[i].counter-1].setValue(true);
+            }
         }
 
         this.filtersForm = this.formBuilder.group({
@@ -57,5 +64,9 @@ export class FilterBarComponent implements OnInit {
                                                             .filter(val => val != null);
         this.filtersService.setActiveFilters(selectedRegions);
         this.filtersService.setOrderByAndSortBy(this.filtersForm.value.orderByFilters,this.filtersForm.value.sortByFilters);
+    }
+
+    ngOnDestroy(){
+        this.queryParams.unsubscribe();
     }
 }

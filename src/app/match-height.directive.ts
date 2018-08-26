@@ -1,4 +1,5 @@
 import { Directive, ElementRef, AfterViewChecked, Input, HostListener } from '@angular/core';
+import { FiltersService } from './filters.service';
 
 @Directive({
     selector: '[appMatchHeight]'
@@ -7,13 +8,12 @@ export class MatchHeightDirective implements AfterViewChecked {
     // class name to match height
     @Input() appMatchHeight: string;
 
-    constructor(private eleRef: ElementRef) {
-    }
+    constructor(private eleRef: ElementRef) {}
 
     ngAfterViewChecked() {
         setTimeout(function(){
             this.matchHeight(this.eleRef.nativeElement, this.appMatchHeight);
-        }.bind(this), 1500);
+        }.bind(this),2000);
     }
 
     matchHeight(parent: HTMLElement, className: string) {

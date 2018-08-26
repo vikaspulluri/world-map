@@ -1,1 +1,164 @@
 <app-header></app-header>
+
+<!-- Loading spinner -->
+<ngx-spinner type="timer" size="large"></ngx-spinner>
+
+<main class="container-fluid">
+    <!-- Flag -->
+    <div class="col-xs-12 country-details">
+        <h1>{{ country?.name }}</h1>
+        <img class="img-responsive" src="{{ country?.flag }}">
+
+        <div class="details">
+            <div class="detail-1">
+                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#geography">Geography</button>
+                <div class="accordion-1 collapse in" id='geography'>
+                    <li class="list-group-item">
+                        <div class="key-item">Capital</div>
+                        <div class="val-item">{{ country?.capital }}</div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="key-item">Population</div>
+                        <div class="val-item">{{ country?.population }}</div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="key-item">Area</div>
+                        <div class="val-item">{{ country?.area }}</div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="key-item">Region</div>
+                        <div class="val-item">{{ country?.region }}</div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="key-item">Subregion</div>
+                        <div class="val-item">{{ country?.subregion }}</div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="key-item">Borders</div>
+                        <div class="val-item">
+                            <span *ngFor="let border of country?.borders">{{ border }}</span>
+                        </div>
+                    </li>
+                </div>
+            </div>
+            <div class="detail-2">
+                    <button type="button" class="btn btn-warning" data-toggle="collapse" data-target="#codes">Codes</button>
+                    <div id="codes" class="accordion-2 collapse in">
+                        <li class="list-group-item">
+                            <div class="key-item">Dialing Codes</div>
+                            <div class="val-item">{{ country?.callingCodes }}</div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="key-item">Alpha2 Code</div>
+                            <div class="val-item">{{ country?.alpha2Code }}</div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="key-item">Alpha3 Code</div>
+                            <div class="val-item">{{ country?.alpha3Code }}</div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="key-item">Numeric Code</div>
+                            <div class="val-item">{{ country?.numericCode }}</div>
+                        </li>
+                    </div>
+            </div>
+            <div class="detail-3">
+                <button type="button" class="btn btn-success" data-toggle="collapse" data-target="#names">Names</button>
+                <div id="names" class="accordion-3 collapse in">
+                    <li class="list-group-item">
+                        <div class="key-item">Native Name</div>
+                        <div class="val-item">{{ country?.nativeName }}</div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="key-item">Short Name</div>
+                        <div class="val-item">{{ country?.cioc }}</div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="key-item">Demonym</div>
+                        <div class="val-item">{{ country?.demonym }}</div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="key-item">Alternate Spellings</div>
+                        <div class="val-item">
+                            <span *ngFor="let spelling of country?.altSpellings">
+                                {{ spelling }}
+                            </span>
+                        </div>
+                    </li>
+                </div>
+            </div>
+            <div class="detail-4">
+                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#languages">Languages</button>
+                <div id="languages" class="accordion-4 collapse in">
+                    <li class="list-group-item">
+                        <div class="key-item">Languages</div>
+                        <div class="val-item">
+                            <span class="filter-btn" *ngFor="let language of country?.languages">
+                                <div (click)="onLanguageFilterClick(language)">
+                                    {{ language?.name }} ({{language?.nativeName}})
+                                </div>
+                            </span>
+                        </div>
+                    </li>  
+                </div>
+            </div>
+            <div class="detail-5">
+                <button type="button" class="btn btn-warning" data-toggle="collapse" data-target="#currencies">Currencies</button>
+                <div id="currencies" class="accordion-5 collapse in">
+                    <li class="list-group-item">
+                        <div class="key-item">Currencies</div>
+                        <div class="val-item">
+                            <span class="currency" *ngFor="let currency of country?.currencies">
+                                <span>
+                                    <strong>Name: </strong>
+                                    <span class="inline">{{ currency?.name }}</span>
+                                </span>
+                                <span>
+                                    <strong>Code: </strong>
+                                    <span class="inline filter-btn" (click)="onCurrencyFilterClick(currency)">{{ currency?.code }}</span>
+                                </span>
+                                <span>
+                                    <strong>Symbol: </strong>
+                                    <span class="inline">{{ currency?.symbol }}</span>
+                                </span>                        
+                            </span>
+                        </div>
+                    </li>  
+                </div>
+            </div>
+            <div class="detail-6">
+                <button type="button" class="btn btn-success" data-toggle="collapse" data-target="#extra">Extra Info</button>
+                <div id="extra" class="accordion-6 collapse in">
+                    <li class="list-group-item">
+                        <div class="key-item">Timezones</div>
+                        <div class="val-item">
+                            <span *ngFor="let timezone of country?.timezones">
+                                {{ timezone }}
+                            </span>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="key-item">Domains</div>
+                        <div class="val-item">
+                            <span *ngFor="let domain of country?.topLevelDomain">
+                                {{ domain }}
+                            </span>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="key-item">Translations</div>
+                        <div class="val-item">
+                            <span *ngFor="let translation of country?.translations | mapToIterable">
+                                <span>
+                                    <strong>{{ translation?.key }}</strong>
+                                    <span class="inline">{{ translation?.val }}</span>
+                                </span>
+                            </span>
+                        </div>
+                    </li>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>

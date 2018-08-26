@@ -1,0 +1,72 @@
+main{
+    position: relative;
+    top: 65px;
+    margin: 0 auto 4em auto;
+}
+.country-details{
+    text-align: center;
+}
+img{
+    margin: 0 auto;
+    max-width: 50%;
+}
+
+.details{
+    margin-top: 2em;
+}
+.details button{
+    width:100%;
+    max-width: 50%;
+    padding: .75em;
+    color: #000;
+    font-size: 1.2em;
+}
+.list-group-item{
+    max-width: 50%;
+    margin: 0 auto;
+}
+.list-group-item > div{
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.list-group-item .key-item{
+    font-weight: 800;
+    font-size: 1.1em;
+    vertical-align: middle;
+}
+.list-group-item .val-item span{
+    display: block;
+    width: 100%;
+    vertical-align: middle;
+    margin-bottom: 5px;
+}
+
+
+.val-item .currency{
+    border: 2px solid #000;
+    margin-bottom: 5px;
+}
+.val-item .currency strong{
+    display: inline-block;
+    width: 50%;
+}
+.val-item .currency .inline{
+    display: inline-block;
+    width: 50%;
+}
+
+.filter-btn{
+    font-size: .8em;
+    background: #5bc0de;
+    border-radius: 3px;
+    padding: 5px 0;
+}
+.filter-btn:hover{
+    cursor: pointer;
+    background: #000;
+    color: #fff;
+}

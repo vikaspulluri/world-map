@@ -6,7 +6,7 @@ import { FiltersService } from './filters.service';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [FormValidators, FiltersService]
+  providers: [FormValidators]
 })
 export class AppComponent {
   title = 'app';

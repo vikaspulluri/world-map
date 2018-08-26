@@ -1,0 +1,12 @@
+.back-btn{
+    display: inline-block;
+    cursor: pointer;
+    color: #fff;
+    font-size: 1.3em;
+}
+.back-btn:hover{
+    color:red;
+}
+.navbar-brand{
+    color:#fff;
+}

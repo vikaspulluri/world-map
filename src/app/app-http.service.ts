@@ -36,27 +36,40 @@ export class AppHttpService{
 
     getCountriesByLanguage(language){
         return this.http.get(`${config.http.hostUrl}/lang/${language}`)
-                .pipe(map(
-                    (res:Response)=>res.json())
-                )
-                .pipe(catchError(
-                    (error:Response) => {
-                        console.log(error);
-                        return Observable.throw(error);
-                    })
-                );
+                        .pipe(map(
+                            (res:Response)=>res.json())
+                        )
+                        .pipe(catchError(
+                            (error:Response) => {
+                                console.log(error);
+                                return Observable.throw(error);
+                            })
+                        );
     }
 
     getCountriesByCurrency(currency){
         return this.http.get(`${config.http.hostUrl}/currency/${currency}`)
-                .pipe(map(
-                    (res:Response)=>res.json())
-                )
-                .pipe(catchError(
-                    (error:Response) => {
-                        console.log(error);
-                        return Observable.throw(error);
-                    })
-                );
+                        .pipe(map(
+                            (res:Response)=>res.json())
+                        )
+                        .pipe(catchError(
+                            (error:Response) => {
+                                console.log(error);
+                                return Observable.throw(error);
+                            })
+                        );
+    }
+
+    getCountryDetails(name){
+        return this.http.get(`${config.http.hostUrl}/name/${name}`)
+                        .pipe(map(
+                            (res:Response)=>res.json())
+                        )
+                        .pipe(catchError(
+                            (error:Response) => {
+                                console.log(error);
+                                return Observable.throw(error);
+                            })
+                        );
     }
 }
