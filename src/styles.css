@@ -10,3 +10,23 @@ body{
 h1,h2,h3,h4,h5,h6{
     font-family: 'Russo One', sans-serif;
 }
+
+::-webkit-scrollbar {
+    width: 8px;
+    border-radius: 2px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: transparent; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #5bc0de; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #5bccdd;
+}

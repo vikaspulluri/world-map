@@ -20,6 +20,7 @@ export class CountriesComponent implements OnInit, OnDestroy {
   languageFilters = {isLanguageFilterApplied: false, languageSelected:'',languageName:''};
   currencyFilters = {isCurrencyFilterApplied: false, currencySelected:'',currencyName:''};
   pageTitle = '';
+  searchedName = '';
   filtersChanged:Subscription;
   orderByChanged:Subscription;
 

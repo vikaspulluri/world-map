@@ -5,3 +5,17 @@
 .filter-panel label{
     display: block;
 }
+.filter-panel button{
+    width:100%;
+}
+
+.filter-regions{
+    margin-bottom: 3em;
+    display: block;
+}
+
+@media screen and (max-width:767px){
+    .filter-regions{
+        display: none;
+    }
+}

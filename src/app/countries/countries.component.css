@@ -19,11 +19,11 @@ h3{
     margin: 0;
 }
 
-.card.europe,.card.europe .filter-btn{border: 2px solid #1986f3}
-.card.asia, .card.asia .filter-btn{border: 2px solid #f3c936}
-.card.africa, .card.africa .filter-btn{border: 2px solid #af2fbb}
-.card.americas, .card.americas .filter-btn{border: 2px solid #0bcc7a}
-.card.oceania, .card.oceania .filter-btn{border: 2px solid #c30101}
+.card.europe{border: 2px solid #1986f3}
+.card.asia{border: 2px solid #f3c936}
+.card.africa{border: 2px solid #af2fbb}
+.card.americas{border: 2px solid #0bcc7a}
+.card.oceania{border: 2px solid #c30101}
 
 .list-group{
     margin-bottom: 0;
@@ -48,7 +48,8 @@ h3{
     color: #000;
     cursor: pointer;
     border-radius: .5em;
-    font-size: .8em;
+    font-size: .7em;
+    background: #5bc0de;
 }
 .filter-btn:hover{
     cursor: pointer;
@@ -56,13 +57,24 @@ h3{
     color:#000;
 }
 .card .filter-btn.more{
-    padding: .5em 1.5em;
+    padding: .5em 2em;
     border-radius: 5px;
     font-size: 1em;
-    border: 2px solid #000;
+    border: none;
     margin: 0 0 1em 0;
+    color: #000;
+    background: #07d407da;
 }
-.filter-btn.more:hover{
-    background: #000;
-    color: #fff;
+.card .filter-btn.more:hover{
+    background: #03fc41;
+}
+input[type='text'] {
+    width: 100%;
+    padding: 8px;
+}
+@media screen and (max-width:767px){
+    .countries-section{
+        position: relative;
+        top: 5em;
+    }
 }

@@ -3,10 +3,29 @@
     cursor: pointer;
     color: #fff;
     font-size: 1.3em;
+    height: 50px;
+    padding: 15px 15px;
+    margin-left: -15px;
+    margin-right: -15px;
 }
 .back-btn:hover{
     color:red;
 }
+.back-btn span{
+    height: 1.3em;
+}
 .navbar-brand{
     color:#fff;
+}
+@media screen and (max-width:767px){
+    .back-btn{
+        position: absolute;
+        left: 10px;
+        top: 10px;
+    }
+    .navbar-brand{
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
 }

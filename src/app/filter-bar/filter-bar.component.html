@@ -1,31 +1,37 @@
 <div class="filter-panel">
-  <div class="filter-regions">
+    <button type="button" class="btn btn-warning visible-xs col-xs-12" data-toggle="collapse" data-target="#filters">Filters</button>
+  <div class="filter-regions" id="filters">
     <form [formGroup]="filtersForm">
-        <h3>Regions:</h3>
-        <label formArrayName="regionFilters" *ngFor="let filter of filtersForm.controls.regionFilters.controls;let i = index">
+        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#regions">Regions</button>
+        <div id="regions" class="collapse in">
+          <label formArrayName="regionFilters" *ngFor="let filter of filtersForm.controls.regionFilters.controls;let i = index">
             <input type="checkbox" [formControlName]="i" (ngModelChange)="onFormSubmit()">{{ regionFilters[i].name }}
-        </label>
-        
+          </label>
+        </div>
         <hr>
 
-        <h3>Sort By:</h3>
-        <div class="radio" *ngFor="let filter of sortByFilters">
-          <label for="{{ filter }}">
-              <input type="radio" [value]="filter" formControlName="sortByFilters" id="{{ filter }}" (ngModelChange)="onFormSubmit()">
-              {{ filter | titlecase }}
-          </label>
+        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#sort-by">Sort By</button>
+        <div class="collapse in" id="sort-by">
+          <div class="radio" *ngFor="let filter of sortByFilters">
+            <label for="{{ filter }}">
+                <input type="radio" [value]="filter" formControlName="sortByFilters" id="{{ filter }}" (ngModelChange)="onFormSubmit()">
+                {{ filter | titlecase }}
+            </label>
+          </div>
         </div>
         
         <hr>
 
-        <h3>Order By:</h3>
-        <div class="radio" *ngFor="let filter of orderByFilters">
-          <label for="{{ filter }}">
-              <input type="radio" [value]="filter" formControlName="orderByFilters" id="{{ filter }}" (ngModelChange)="onFormSubmit()">
-              {{ filter | titlecase }}
-          </label>
+        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#order-by">Order By</button>
+        <div class="collapse in" id="order-by">
+          <div class="radio" *ngFor="let filter of orderByFilters">
+            <label for="{{ filter }}">
+                <input type="radio" [value]="filter" formControlName="orderByFilters" id="{{ filter }}" (ngModelChange)="onFormSubmit()">
+                {{ filter | titlecase }}
+            </label>
+          </div>
         </div>
-        </form>
+      </form>
     
   </div>
 </div>
