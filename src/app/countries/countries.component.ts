@@ -5,7 +5,7 @@ import { HelpersService } from '../helpers.service';
 import { Response } from '@angular/http';
 import { FiltersService } from '../filters.service';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { Subscription, Observable } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-countries',
@@ -117,6 +117,7 @@ export class CountriesComponent implements OnInit, OnDestroy {
             this.setPageTitle('regionFilter');
           },
           (error:Response) => {
+            this.hideSpinner();
             let err = error.json();
             this.helpersService.showErrorMsg(err.message);
           }
@@ -134,6 +135,7 @@ export class CountriesComponent implements OnInit, OnDestroy {
                         this.setPageTitle('langFilter');
                       },
                       (error:Response) => {
+                        this.hideSpinner();
                         let err = error.json();
                         this.helpersService.showErrorMsg(err.message);
                       }
@@ -153,6 +155,7 @@ export class CountriesComponent implements OnInit, OnDestroy {
                         this.setPageTitle('currencyFilter');
                       },
                       (error:Response) => {
+                        this.hideSpinner();
                         let err = error.json();
                         this.helpersService.showErrorMsg(err.message);
                       }

@@ -3,7 +3,6 @@
     cursor: pointer;
     color: #fff;
     font-size: 1.3em;
-    height: 50px;
     padding: 15px 15px;
     margin-left: -15px;
     margin-right: -15px;
@@ -22,6 +21,8 @@
         position: absolute;
         left: 10px;
         top: 10px;
+        padding-top: 0;
+        padding-bottom: 0;
     }
     .navbar-brand{
         position: absolute;

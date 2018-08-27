@@ -17,6 +17,7 @@ export class FilterBarComponent implements OnInit, OnDestroy {
     sortByFilters = config.filters.sortByProp;
     selectedRegion;
     queryParams;
+    filtersVisible:boolean = false;
 
     constructor(private formBuilder: FormBuilder, private route:ActivatedRoute,private helpersService:HelpersService,private filtersService:FiltersService){
         this.queryParams = this.route.queryParamMap.subscribe(

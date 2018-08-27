@@ -70,3 +70,17 @@ img{
     background: #000;
     color: #fff;
 }
+
+@media screen and (max-width:768px){
+    .details button{
+        max-width: 100%;
+    }
+    .list-group-item{
+        max-width: 100%;
+    }
+}
+@media screen and (max-width:440px){
+    .country-details, .country-details .details{
+        padding: 0;
+    }
+}

@@ -43,6 +43,7 @@ export class CountryComponent implements OnInit {
                         console.log(this.country);
                       },
                       (error:Response) => {
+                        this.spinnerService.hide();
                         let err = error.json();
                         this.helpersService.showErrorMsg(err.message);
                       }

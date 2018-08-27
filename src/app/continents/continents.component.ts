@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { config } from '../app.config';
 import { HelpersService } from '../helpers.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 /*We need a global variable 'google' so that after the loader.js script executed in the index.html,
 this value gets initilized */
@@ -15,7 +16,7 @@ declare let google:any;
 export class ContinentsComponent implements OnInit {
   public countryId;
 
-  constructor(private helpersService:HelpersService, private router:Router) {
+  constructor(private helpersService:HelpersService, private router:Router, private spinnerService:NgxSpinnerService) {
     // Loading google geochart
     google.charts.load('current', {
       'packages': ['geochart'],
@@ -24,6 +25,7 @@ export class ContinentsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.spinnerService.show();
     //executing a callback function once the chart has been loaded
     google.charts.setOnLoadCallback(()=>this.drawRegionsMap());
   }
@@ -53,12 +55,12 @@ export class ContinentsComponent implements OnInit {
       if (clickedItem) {
         let selectedRegionCode = data.getValue(clickedItem.row, 0);
         let selectedRegionObj:{[k:string]:any} = self.helpersService.getRegionNameById(selectedRegionCode);
-        console.log(selectedRegionObj);
         self.router.navigate(['/countries'],{queryParams: {'continent':selectedRegionObj.name}});
       }
     }
 
     google.visualization.events.addListener(geoChart, 'select', clickHandler);
+    this.spinnerService.hide();
     geoChart.draw(data, config.map.options);
 
   }

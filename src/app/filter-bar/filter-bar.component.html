@@ -1,11 +1,13 @@
 <div class="filter-panel">
-    <button type="button" class="btn btn-warning visible-xs col-xs-12" data-toggle="collapse" data-target="#filters">Filters</button>
-  <div class="filter-regions" id="filters">
+  <button type="button" class="btn btn-warning visible-xs col-xs-12" (click)="filtersVisible = !filtersVisible">Filters</button>
+  <div class="filter-regions visible-sm visible-md visible-lg" id="filters" [ngClass]="{'visible-xs':filtersVisible  }">
     <form [formGroup]="filtersForm">
         <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#regions">Regions</button>
-        <div id="regions" class="collapse in">
+        <div id="regions" class="checkbox collapse in">
           <label formArrayName="regionFilters" *ngFor="let filter of filtersForm.controls.regionFilters.controls;let i = index">
-            <input type="checkbox" [formControlName]="i" (ngModelChange)="onFormSubmit()">{{ regionFilters[i].name }}
+            <input type="checkbox" [formControlName]="i" (ngModelChange)="onFormSubmit()">
+            <div></div>
+            <span>{{ regionFilters[i].name }}</span>
           </label>
         </div>
         <hr>
@@ -14,8 +16,9 @@
         <div class="collapse in" id="sort-by">
           <div class="radio" *ngFor="let filter of sortByFilters">
             <label for="{{ filter }}">
-                <input type="radio" [value]="filter" formControlName="sortByFilters" id="{{ filter }}" (ngModelChange)="onFormSubmit()">
-                {{ filter | titlecase }}
+              {{ filter | titlecase }}  
+              <input type="radio" [value]="filter" formControlName="sortByFilters" id="{{ filter }}" class="radio-input" (ngModelChange)="onFormSubmit()">
+              <span></span>
             </label>
           </div>
         </div>
@@ -26,8 +29,9 @@
         <div class="collapse in" id="order-by">
           <div class="radio" *ngFor="let filter of orderByFilters">
             <label for="{{ filter }}">
-                <input type="radio" [value]="filter" formControlName="orderByFilters" id="{{ filter }}" (ngModelChange)="onFormSubmit()">
-                {{ filter | titlecase }}
+              {{ filter | titlecase }}  
+              <input type="radio" [value]="filter" formControlName="orderByFilters" id="{{ filter }}" class="radio-input" (ngModelChange)="onFormSubmit()">
+              <span></span>
             </label>
           </div>
         </div>

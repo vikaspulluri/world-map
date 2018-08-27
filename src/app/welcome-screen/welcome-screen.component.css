@@ -25,6 +25,8 @@ div{
 }
 .fly-in-text{
     list-style: none;
+    padding-left: 0;
+    margin: 0 auto;
 }
 .fly-in-text li{
     display: inline-block;
