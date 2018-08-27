@@ -67,6 +67,10 @@ export class FilterBarComponent implements OnInit, OnDestroy {
         this.filtersService.setOrderByAndSortBy(this.filtersForm.value.orderByFilters,this.filtersForm.value.sortByFilters);
     }
 
+    getRegionFiltersControls(){
+        return <FormArray>this.filtersForm.controls.regionFilters;
+    }
+
     ngOnDestroy(){
         this.queryParams.unsubscribe();
     }

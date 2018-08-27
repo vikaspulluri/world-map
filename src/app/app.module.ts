@@ -18,7 +18,7 @@ import { AppHttpService } from './app-http.service';
 import { HttpModule } from '@angular/http';
 import { ToastrModule } from 'ngx-toastr';
 import { MatchHeightDirective } from './match-height.directive';
-import { NgxSpinnerModule, NgxSpinnerComponent } from 'ngx-spinner';
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { FiltersService } from './filters.service';
 import { MapToIterable } from './map-to-iterable.pipe';
 import { SearchByName } from './search-by-name.pipe';
@@ -35,7 +35,6 @@ import { SearchByName } from './search-by-name.pipe';
     WelcomeScreenComponent,
     ToggleWelcomeScreenDirective,
     MatchHeightDirective,
-    NgxSpinnerComponent,
     MapToIterable,
     SearchByName
   ],
@@ -46,7 +45,8 @@ import { SearchByName } from './search-by-name.pipe';
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    NgxSpinnerModule
   ],
   providers: [AppHttpService, NgxSpinnerModule, FiltersService],
   bootstrap: [AppComponent]

@@ -4,7 +4,7 @@
     <form [formGroup]="filtersForm">
         <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#regions">Regions</button>
         <div id="regions" class="checkbox collapse in">
-          <label formArrayName="regionFilters" *ngFor="let filter of filtersForm.controls.regionFilters.controls;let i = index">
+          <label formArrayName="regionFilters" *ngFor="let filter of getRegionFiltersControls().controls;let i = index">
             <input type="checkbox" [formControlName]="i" (ngModelChange)="onFormSubmit()">
             <div></div>
             <span>{{ regionFilters[i].name }}</span>
