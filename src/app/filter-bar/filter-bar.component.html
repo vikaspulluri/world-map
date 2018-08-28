@@ -1,6 +1,6 @@
 <div class="filter-panel">
-  <button type="button" class="btn btn-warning visible-xs col-xs-12" (click)="filtersVisible = !filtersVisible">Filters</button>
-  <div class="filter-regions visible-sm visible-md visible-lg" id="filters" [ngClass]="{'visible-xs':filtersVisible  }">
+  <!-- <button type="button" class="btn btn-warning visible-xs col-xs-12" (click)="filtersVisible = !filtersVisible">Filters</button> -->
+  <div class="filter-regions navbar-nav mr-auto collapse navbar-collapse" id="filters">
     <form [formGroup]="filtersForm">
         <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#regions">Regions</button>
         <div id="regions" class="checkbox collapse in">
@@ -15,9 +15,9 @@
         <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#sort-by">Sort By</button>
         <div class="collapse in" id="sort-by">
           <div class="radio" *ngFor="let filter of sortByFilters">
-            <label for="{{ filter }}">
-              {{ filter | titlecase }}  
+            <label for="{{ filter }}">  
               <input type="radio" [value]="filter" formControlName="sortByFilters" id="{{ filter }}" class="radio-input" (ngModelChange)="onFormSubmit()">
+              <div>{{ filter | titlecase }}</div>
               <span></span>
             </label>
           </div>
@@ -28,9 +28,9 @@
         <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#order-by">Order By</button>
         <div class="collapse in" id="order-by">
           <div class="radio" *ngFor="let filter of orderByFilters">
-            <label for="{{ filter }}">
-              {{ filter | titlecase }}  
+            <label for="{{ filter }}">  
               <input type="radio" [value]="filter" formControlName="orderByFilters" id="{{ filter }}" class="radio-input" (ngModelChange)="onFormSubmit()">
+              <div>{{ filter | titlecase }}</div>
               <span></span>
             </label>
           </div>

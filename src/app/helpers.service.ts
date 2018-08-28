@@ -37,7 +37,7 @@ export class HelpersService {
       tmpObj.name = item.name;
       tmpObj.flag = item.flag;
       tmpObj.capital = item.capital;
-      tmpObj.population = item.population;
+      tmpObj.population = <number>item.population.toLocaleString('en-US');
       tmpObj.languages = item.languages;
       tmpObj.currencies = item.currencies;
       tmpObj.region = item.region;

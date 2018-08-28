@@ -1,0 +1,11 @@
+.content{
+    position: absolute;
+    left: 50%;
+    top:30%;
+    transform: translateX(-50%);
+    color: rgb(241, 171, 19);
+}
+.content a{
+    cursor: pointer;
+    color: #fff;
+}

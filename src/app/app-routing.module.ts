@@ -12,7 +12,7 @@ export const appRoutes:Routes = [
     {path: 'countries', component: CountriesComponent},
     {path: 'country', component: CountryComponent},
     {path: 'not-found', component: ErrorPageComponent},
-    {path: '**', redirectTo: '/not-foune'}
+    {path: '**', redirectTo: '/not-found'}
 ] 
 
 @NgModule({

@@ -1,7 +1,14 @@
 .countries{
     position: relative;
-    top: 65px;
+    top: 45px;
+    display: block;
+    background: url(/assets/map-bg.jpg) no-repeat;
+    background-attachment: fixed;
+    background-position-y: center;
+    object-fit: cover;
+    width: 100%;
 }
+
 .country{
     margin: .5em auto;
 }
@@ -9,14 +16,19 @@
     border: 2px solid #000;
     text-align: center;
     border-radius: 5px;
-    background: transparent;
+    background: rgba(0,0,0,.1);
 }
 h2{
     text-align: center;
+    color: rgb(241, 171, 19);
 }
 h3{
     padding: 0;
     margin: 0;
+}
+.img-thumbnail{
+    height:200px;
+    object-fit: cover;
 }
 
 .card.europe{border: 2px solid #1986f3}
@@ -30,7 +42,7 @@ h3{
 }
 .list-group-item{
     background: transparent;
-    color: #000;
+    color: rgb(241, 171, 19);
     border: none;
 }
 
@@ -45,29 +57,33 @@ h3{
 .filter-btn{
     display: inline-block;
     padding: 2px 5px;
-    color: #000;
+    color: rgb(241, 171, 19);;
     cursor: pointer;
     border-radius: .5em;
     font-size: .7em;
-    background: #5bc0de;
+    border: 1px solid rgba(241,171,19,0.8);
+    transition: .3s ease-out;
 }
 .filter-btn:hover{
     cursor: pointer;
-    text-decoration: none;
-    color:#000;
+    text-decoration: underline;
+    color: rgba(241,171,19,0.8);
+    border: 1px solid rgb(241, 171, 19);
 }
 .card .filter-btn.more{
-    padding: .5em 2em;
-    border-radius: 5px;
+    padding: .5em 3em;
     font-size: 1em;
-    border: 2px solid #000;
+    color: rgb(241, 171, 19);;
+    border: 2px solid rgb(241, 171, 19);;
     margin: 0 0 1em 0;
-    color: #000;
+    border-radius: 0;
     background: transparent;
 }
 .card .filter-btn.more:hover{
-    background: #000;
-    color: #fff;
+    text-decoration: underline;
+    cursor: pointer;
+    color: rgba(241,171,19,0.8);
+    border: 2px solid rgba(241,171,19,0.8);
 }
 input[type='text'] {
     width: 100%;
@@ -76,6 +92,5 @@ input[type='text'] {
 @media screen and (max-width:767px){
     .countries-section{
         position: relative;
-        top: 5em;
     }
 }

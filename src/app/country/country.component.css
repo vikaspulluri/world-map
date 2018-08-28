@@ -1,10 +1,21 @@
 main{
     position: relative;
-    top: 65px;
-    margin: 0 auto 4em auto;
+    top: 45px;
+    display: block;
+    background: url(/assets/map-bg.jpg) no-repeat;
+    background-attachment: fixed;
+    background-position-y: center;
+    object-fit: cover;
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: 1em; 
 }
 .country-details{
     text-align: center;
+}
+h1{
+    color: rgb(241, 171, 19);
+    font-size: 2.5em;
 }
 img{
     margin: 0 auto;
@@ -18,12 +29,16 @@ img{
     width:100%;
     max-width: 50%;
     padding: .75em;
-    color: #000;
-    font-size: 1.2em;
+    color: darkred;
+    font-size: 1.3em;
+    font-weight: 800;
+    background: rgba(128,128,128,.6);
 }
 .list-group-item{
     max-width: 50%;
     margin: 0 auto;
+    color: rgb(241, 171, 19);
+    background: transparent;
 }
 .list-group-item > div{
     display: inline-block;
@@ -47,7 +62,7 @@ img{
 
 
 .val-item .currency{
-    border: 2px solid #000;
+    border: 2px solid #fff;
     margin-bottom: 5px;
 }
 .val-item .currency strong{
@@ -56,19 +71,22 @@ img{
 }
 .val-item .currency .inline{
     display: inline-block;
-    width: 50%;
+    width: 48%;
 }
 
 .filter-btn{
     font-size: .8em;
-    background: #5bc0de;
+    background: transparent;
     border-radius: 3px;
     padding: 5px 0;
+    border: 1px solid rgba(241,171,19,0.8);
+    transition: .4s ease-in-out;
 }
 .filter-btn:hover{
     cursor: pointer;
-    background: #000;
-    color: #fff;
+    text-decoration: underline;
+    color: rgba(241,171,19,0.8);
+    border: 1px solid rgb(241, 171, 19);
 }
 
 @media screen and (max-width:768px){

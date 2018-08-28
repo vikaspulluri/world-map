@@ -53,7 +53,7 @@ export class CountryComponent implements OnInit {
   getRequestedCountry(data){
     const matchedCountry = data.filter(function(country){
       let filteredCountryName = country.name.replace(/[^a-zA-Z0-9-_]/g, ' ');
-      return filteredCountryName === this.countryName;
+      return filteredCountryName.toLowerCase() === this.countryName.toLowerCase();
     }.bind(this));
     return matchedCountry[0];
   }
