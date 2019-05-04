@@ -1,3 +1,7 @@
+# [World Map Application](http://countries.meanpro.com/) by [Meanpro](http://www.meanpro.com/)
+
+## Problem Statement
+
 As a solution to this problem statement, you are supposed to create an Angular
 application with following views -
 1) All regions view - A beautiful looking view displaying all the regions in the
@@ -23,3 +27,7 @@ region)
 All countries view should open again, but this time with a language filter applied.
 I.e it will display the countries which have the selected language (irrespective of
 the region).
+
+## Solution
+
+### http://countries.meanpro.com/
